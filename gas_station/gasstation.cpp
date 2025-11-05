@@ -4,7 +4,7 @@ using namespace std;
 
 
     double minMaxDist(vector<int> &stations, int K) {
-        // Code here
+    //     Code here
     //     if (stations.size() <= 1) return 0.0;
 
     //     vector<int>placed(stations.size()-1,0);
@@ -30,7 +30,7 @@ using namespace std;
     //     }
     //  return ans;
 
-    // now a better apporach using priority_queue where elements with higher value are at top
+    // now a better apporach using priority_queue where elements with higher value are at top O(nlogn)+O(klogn)
     if (stations.size() <= 1) return 0.0;
         int n=stations.size();
         vector<int>placed(stations.size()-1,0);
