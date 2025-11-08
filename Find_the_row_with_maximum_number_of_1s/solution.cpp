@@ -5,26 +5,54 @@ using namespace std;
 // brute force approach
 
     
-  int rowWithMax1s(vector<vector<int>>& mat) {
-        int maxcount=-1;
-        int index=-1;
-        int count=0;
-        for(int i =0;i<mat.size();i++){
-            int count=-1;
-            for(int j=0;j<mat[i].size();j++){
-                if(mat[i][j]==1){
-                  count++;
-                 }
-            }
-            if(count>maxcount){
-              maxcount=count;
-              index=i;
-            }
+  // int rowWithMax1s(vector<vector<int>>& mat) {
+  //       int maxcount=-1;
+  //       int index=-1;
+  //       int count=0;
+  //       for(int i =0;i<mat.size();i++){
+  //           int count=-1;
+  //           for(int j=0;j<mat[i].size();j++){
+  //               if(mat[i][j]==1){
+  //                 count++;
+  //                }
+  //           }
+  //           if(count>maxcount){
+  //             maxcount=count;
+  //             index=i;
+  //           }
             
              
-          }
-          return index;
-  }
+  //         }
+  //         return index;
+  // }
+
+      // optimal approach using binary search
+  int rowWithMax1s(vector<vector<int>> &arr) {
+        int maxcount=0;
+        
+        int index=-1;
+        for(int i=0;i<arr.size();i++){
+            int count=0;
+            int low=0;
+            int high=arr[i].size()-1;
+            while(low<=high){
+                int mid=low+(high-low)/2;
+                if(arr[i][mid]==1){
+                    count=(high-mid+1)+count;
+                    high=mid-1;
+                }
+                else{
+                    low=mid+1;
+                }
+            }
+            if(count>maxcount){
+                maxcount=count;
+                index=i;
+            }
+        }
+        return index;
+      }  
+
 
   int main(){
       int n,m;  
