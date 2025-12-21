@@ -3,7 +3,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-struct Node{
+struct Node{    //use class for objects oriented programming
 public:
     int data;
     Node* next;
