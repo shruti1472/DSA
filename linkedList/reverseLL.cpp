@@ -39,7 +39,7 @@ void printLL(Node* head){
 
 //reversing a linked list
 Node* reverseLL(Node* head){
-    //iterative approach
+    // iterative approach
     //    if(head==nullptr || head->next==nullptr){
     //     return head;
     //    }
@@ -54,14 +54,14 @@ Node* reverseLL(Node* head){
     //    return prev;
 
     //recursive approach
-    if(head==nullptr || head->next==nullptr){
-        return head;
-    }
-     Node* newHead=reverseLL(head->next);
-        Node* front=head->next;
-        front->next=head;
-        head->next=nullptr;
-        return newHead;
+    // if(head==nullptr || head->next==nullptr){
+    //     return head;
+    // }
+    //  Node* newHead=reverseLL(head->next);
+    //     Node* front=head->next;
+    //     front->next=head;
+    //     head->next=nullptr;
+    //     return newHead;
 }
 
 int main(){
