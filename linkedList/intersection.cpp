@@ -70,20 +70,68 @@ Node* intersection(Node* headA, Node* headB){
     // }
 
     //another approach is to use hashing with time complexity O(m+n) and space complexity O(m) or O(n)
-    unordered_map<Node* , int>mp;
-    Node* temp=headA;
-    while(temp!=nullptr){
-        mp[temp]=1;
-        temp=temp->next;
-    } 
-    temp=headB;
-    while(temp!=nullptr){
-        if(mp.find(temp)!=mp.end()){
-            return temp;
-        }
-        temp=temp->next;
+    // unordered_map<Node* , int>mp;
+    // Node* temp=headA;
+    // while(temp!=nullptr){
+    //     mp[temp]=1;
+    //     temp=temp->next;
+    // } 
+    // temp=headB;
+    // while(temp!=nullptr){
+    //     if(mp.find(temp)!=mp.end()){
+    //         return temp;
+    //     }
+    //     temp=temp->next;
+    // }
+    // return nullptr;
+
+    //another approach is to find the length of both linked list and then 
+    //move the pointer of longer linked list by the difference of length 
+    //and then move both pointers one step at a time until they point to the same node
+
+    // Node* tempA=headA;
+    // int countA=0;
+    // while(tempA!=nullptr){
+    //     countA++;
+    //     tempA=tempA->next;
+    // }
+    // Node* tempB=headB;
+    // int countB=0;
+    // while(tempB!=nullptr){
+    //     countB++;
+    //     tempB=tempB->next;
+    // }
+    // int skip=0;
+    // tempA=headA;
+    // tempB=headB;
+    // if(countA>countB){
+    //     skip=countA-countB;
+    //     while(skip){
+    //         tempA=tempA->next;
+    //         skip--;
+    //     }
+    // }
+    // else{
+    //     skip=countB-countA;
+    //     while(skip){
+    //         tempB=tempB->next;
+    //         skip--;
+    //     }
+    // }
+    // while(tempA!=nullptr && tempB!=nullptr){
+    //     if(tempA==tempB) return tempA;
+    //     tempA=tempA->next;
+    //     tempB=tempB->next;
+    // }
+
+    //another approach
+    Node* tempA=headA;
+    Node* tempB=headB;
+    while(tempA!=tempB){
+        tempA=(tempA!=nullptr)?tempA->next:headB;
+        tempB=(tempB!=nullptr)?tempB->next:headA;
     }
-    return nullptr;
+    return tempA;
 }
 
 
