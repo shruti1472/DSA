@@ -1,5 +1,6 @@
 #include<iostream>
-#include<vector>
+#include<unordered_map>
+
 using namespace std;
 
 class Node{
@@ -53,17 +54,34 @@ Node* getNode(Node* head,int x){
 
 //to find intersection point
 Node* intersection(Node* headA, Node* headB){
+   
+   
     //this is the brute force approach with time complexity O(m*n)
-    Node* tempA=headA;  
-    while(tempA!=nullptr){
-        Node* tempB=headB;
-        while(tempB!=nullptr){
-            if(tempA==tempB){
-                return tempA;
-            }
-            tempB=tempB->next;
+    // Node* tempA=headA;  
+    // while(tempA!=nullptr){
+    //     Node* tempB=headB;
+    //     while(tempB!=nullptr){
+    //         if(tempA==tempB){
+    //             return tempA;
+    //         }
+    //         tempB=tempB->next;
+    //     }
+    //     tempA=tempA->next;
+    // }
+
+    //another approach is to use hashing with time complexity O(m+n) and space complexity O(m) or O(n)
+    unordered_map<Node* , int>mp;
+    Node* temp=headA;
+    while(temp!=nullptr){
+        mp[temp]=1;
+        temp=temp->next;
+    } 
+    temp=headB;
+    while(temp!=nullptr){
+        if(mp.find(temp)!=mp.end()){
+            return temp;
         }
-        tempA=tempA->next;
+        temp=temp->next;
     }
     return nullptr;
 }
