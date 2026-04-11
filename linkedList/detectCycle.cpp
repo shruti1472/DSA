@@ -45,18 +45,29 @@ bool detectcycle(Node* head){
         return false;
     }
     //using map to store the visited nodes approach time complexity O(n) and space complexity O(n)
-    unordered_map<Node* ,int>mp;
-    Node* temp=head;
-    while(temp!=nullptr){
-        if(mp.find(temp)!=mp.end()){
-            return true;
-        }
-        else{
-            mp[temp]=1;
-            temp=temp->next;
-        }
+    // unordered_map<Node* ,int>mp;
+    // Node* temp=head;
+    // while(temp!=nullptr){
+    //     if(mp.find(temp)!=mp.end()){
+    //         return true;
+    //     }
+    //     else{
+    //         mp[temp]=1;
+    //         temp=temp->next;
+    //     }
+    // }
+    // return false;
+
+    //another approach of solving this problem is using the two pointer approach time complexity O(n) and space complexity O(1)
+
+    Node* slow=head;
+    Node* fast=head;
+    while(fast!=nullptr && fast->next!=nullptr){
+        slow=slow->next;
+        fast=fast->next->next;
+        if(slow==fast) return true;
+
     }
-    return false;
 }
 
 int main(){
