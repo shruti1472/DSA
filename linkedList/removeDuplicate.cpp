@@ -59,7 +59,6 @@ Node* removeDuplicate(Node* head){
          }
          else{
             temp1=temp1->next;
-           
          }
     }
     return head;
