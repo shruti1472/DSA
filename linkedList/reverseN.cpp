@@ -96,5 +96,4 @@ int main(){
     Node* newList=reverseKGroup(head,k);
     cout<<"list after reversing k group: ";
     printLL(newList);
-
 }
