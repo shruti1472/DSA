@@ -1,14 +1,21 @@
 #include<iostream>
+#include<vector>
 using namespace std;
 
 class Queue{
     public:
-    int q[5];
+    vector<int>q;
     int front=-1;
     int rear=-1;
+    int size;
+
+    Queue(int n){
+        size=n;
+        q.resize(size);
+    }
 
     bool isFull(){
-        return((front==0 && rear==4) || (rear==(front-1+5)%5) );
+        return((front==0 && rear==size-1) || (rear==(front-1+size)%size) );
     }
 
     bool isEmpty(){
@@ -21,7 +28,7 @@ class Queue{
                 front=rear=0;
             }
             else{
-                rear=(rear+1)%5;
+                rear=(rear+1)%size;
             }
             q[rear]=data;
         }
@@ -37,7 +44,7 @@ class Queue{
                 rear=-1;
             }
             else{
-                front=(front+1)%5;
+                front=(front+1)%size;
             }
         }
         else{
@@ -51,7 +58,7 @@ class Queue{
             while(true){
                 cout<<q[i]<<" ";
                 if(i==rear) break;
-                i=(i+1)%5;
+                i=(i+1)%size;
             }
             cout<<endl;
         }
@@ -62,7 +69,7 @@ class Queue{
 };
 
 int main(){
-    Queue q;
+    Queue q(5);
     q.enqueue(10);
     q.enqueue(20);
     q.enqueue(30);
